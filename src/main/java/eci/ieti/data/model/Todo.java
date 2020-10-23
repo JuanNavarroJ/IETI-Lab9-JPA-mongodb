@@ -69,4 +69,16 @@ public class Todo {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "Todo{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", priority=" + priority +
+                ", dueDate=" + dueDate +
+                ", responsible='" + responsible + '\'' +
+                ", status='" + status + '\'' +
+                '}';
+    }
 }

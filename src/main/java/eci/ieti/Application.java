@@ -40,6 +40,9 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
+        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
+        MongoOperations mongoOperation = (MongoOperations) applicationContext.getBean("mongoTemplate");
+
         customerRepository.deleteAll();
 
         customerRepository.save(new Customer("Alice", "Smith"));
@@ -112,9 +115,6 @@ public class Application implements CommandLineRunner {
 
 
         System.out.println();
-
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(AppConfiguration.class);
-        MongoOperations mongoOperation = (MongoOperations) applicationContext.getBean("mongoTemplate");
 
         Query query = new Query();
         query.addCriteria(Criteria.where("firstName").is("Alice"));
